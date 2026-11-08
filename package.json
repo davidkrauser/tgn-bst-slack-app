@@ -1,0 +1,17 @@
+{
+  "name": "bst-reply-bot",
+  "version": "1.0.0",
+  "license": "Unlicense",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-exclude='src/app.js' --test-coverage-exclude='test/**' --test-coverage-lines=95 --test-coverage-branches=90 --test-coverage-functions=95 'test/**/*.test.js'"
+  },
+  "dependencies": {
+    "@slack/bolt": "^4.2.1"
+  },
+  "engines": {
+    "node": ">=22.8"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "display_information": {
+    "name": "BST Reply Bot",
+    "description": "Replies in thread to buy/sell/trade posts that miss the posting format",
+    "background_color": "#1a1a2e"
+  },
+  "features": {
+    "app_home": {
+      "home_tab_enabled": false,
+      "messages_tab_enabled": false,
+      "messages_tab_read_only_enabled": false
+    },
+    "bot_user": {
+      "display_name": "BST Reply Bot",
+      "always_online": true
+    }
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "chat:write",
+        "channels:history",
+        "reactions:write"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "bot_events": [
+        "message.channels"
+      ]
+    },
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false
+  }
+}

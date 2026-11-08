@@ -23,6 +23,8 @@ adds a 🚨 reaction to the post and replies in its thread:
 > - It's missing a price
 > - It's missing a photo. Sale and trade posts need exactly *one* photo showing the
 >   item plus a handwritten note with your Slack name and the date of the post.
+>
+> This reply will be removed once you edit your post to fix every item above.
 
 "rules" can link to the channel's rules page if we give the bot one.
 

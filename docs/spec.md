@@ -102,7 +102,9 @@ Out of scope, permanently:
     (case-insensitive). The second case is reported as `no_tag`.
 13. The nudge is sent as standard markdown (`markdown_text`), with no emoji. It
     reads `Hi! This looks like a listing, but it doesn't follow the posting
-    rules:`, a blank line, then one `- ` bullet per problem in report order. When
+    rules:`, a blank line, then one `- ` bullet per problem in report order, then
+    a blank line and the closing sentence `This reply will be removed once you
+    edit your post to fix every item above.` When
     `BST_RULES_URL` is set, "rules" is a markdown link to it, `[rules](url)`;
     otherwise it is plain text. The bullets are:
 

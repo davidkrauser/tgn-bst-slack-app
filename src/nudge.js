@@ -23,11 +23,13 @@ export function nudgeProblems(message) {
   return hasImage(message.files) || listingLike ? ["no_tag"] : [];
 }
 
+const CLOSING = "This reply will be removed once you edit your post to fix every item above.";
+
 // Takes only codes and the operator's URL, so no member text can reach the reply.
 export function nudgeText(problems, rulesUrl) {
   const rules = rulesUrl ? `[rules](${rulesUrl})` : "rules";
   const bullets = problems.map((code) => `- ${SENTENCES[code]}`).join("\n");
-  return `Hi! This looks like a listing, but it doesn't follow the posting ${rules}:\n\n${bullets}`;
+  return `Hi! This looks like a listing, but it doesn't follow the posting ${rules}:\n\n${bullets}\n\n${CLOSING}`;
 }
 
 const LAMP = "rotating_light";

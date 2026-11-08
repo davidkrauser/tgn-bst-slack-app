@@ -131,6 +131,18 @@ describe("nudgeText", () => {
     }
   });
 
+  test("the reply ends with a blank line and the closing sentence", () => {
+    const closing = "\n\nThis reply will be removed once you edit your post to fix every item above.";
+    for (const rulesUrl of [RULES, null]) {
+      for (const code of Object.keys(SENTENCES)) {
+        const out = nudgeText([code], rulesUrl);
+        assert.ok(out.endsWith(`- ${SENTENCES[code]}${closing}`), `ending for ${code}: ${out}`);
+      }
+      const out = nudgeText(["location", "price", "photo"], rulesUrl);
+      assert.ok(out.endsWith(`- ${SENTENCES.photo}${closing}`), `ending for three problems: ${out}`);
+    }
+  });
+
   test("each problem gets its own bullet line", () => {
     const out = nudgeText(["photo", "title", "price"], RULES);
     assert.deepStrictEqual(

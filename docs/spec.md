@@ -3,7 +3,13 @@
 What the bot does, and the constraints it is built under. The tests pin this
 behaviour, and [the threat model](threat-model.md) explains why the security rules
 exist. When a behaviour changes, change this file, the tests and, where it applies,
-the threat model in the same commit.
+the threat model in the same commit. If the change affects what `README.md` or
+`SECURITY.md` say, update them too (see
+[development.md](development.md#changes-that-need-a-heads-up)).
+
+The lamp is the bot's `:rotating_light:` reaction; a nudge is the lamp plus the
+bot's thread reply. [development.md](development.md#how-it-works) walks through the
+code that implements these rules.
 
 ## Scope
 
@@ -192,11 +198,18 @@ Out of scope, permanently:
     finding is recorded as an accepted risk in the threat model.
 31. The committed tree names no workspace, host, personal email address, token or
     channel id. Examples use example.com.
-32. `README.md` lets someone outside the original workspace create the app from
-    `manifest.json`, generate both tokens, configure, run, test and deploy the bot.
-    `SECURITY.md` says how to report a vulnerability (GitHub private vulnerability
-    reporting) and summarises the threat model. `LICENSE` holds the Unlicense, and
-    `package.json` declares `"license": "Unlicense"`.
+32. The top-level `README.md` and `SECURITY.md` are the non-technical overview:
+    plain, informal language, with any jargon explained where it is used or in the
+    glossary at the end of `SECURITY.md`. `README.md` says what the bot does and
+    can't do, and `SECURITY.md` explains the threat model's assets, mitigations and
+    accepted risks in those terms, including how to switch the bot off. `docs/` is
+    technical, for the people who run and change the bot: `docs/setup.md` lets
+    someone outside the original workspace create the app from `manifest.json`,
+    generate both tokens, configure, run, test and deploy it, and
+    `docs/development.md` explains the code, the logs and how to make a change.
+    Problems are reported to the person running the bot or the moderators in Slack;
+    there is no separate vulnerability reporting process. `LICENSE` holds the
+    Unlicense, and `package.json` declares `"license": "Unlicense"`.
 
 ### Deployment
 
@@ -243,7 +256,7 @@ Out of scope, permanently:
        the one the link points at.
 
     It never installs or edits the unit or the env file; that is one-time host
-    setup, described in the README.
+    setup, described in `docs/setup.md`.
 
 ### Tests
 

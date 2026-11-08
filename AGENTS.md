@@ -3,7 +3,8 @@
 A small Slack bot (Bolt, Socket Mode) that watches one buy/sell/trade channel and
 replies once, in thread, to listing-like posts that break the posting format. This
 file is contributor context: invariants, constraints, and where things live.
-Behaviour details belong in `docs/spec.md`, and the tests pin them.
+Behaviour details belong in `docs/spec.md`, and the tests pin them. The human
+developer guide is `docs/development.md`.
 
 ## Hard constraints — do not violate
 
@@ -18,11 +19,20 @@ Behaviour details belong in `docs/spec.md`, and the tests pin them.
 ## Layout
 
 - `package.json` — `npm start` (runs `src/app.js`), the gated test script, the Node
-  engine (`>=22.8`, as the README says) and the license field.
-- `README.md` — operator docs, from creating the Slack app to deploying. Keep its env
-  vars, scopes and deploy steps in step with `src/config.js`, `manifest.json` and
-  `deploy/`.
-- `SECURITY.md` — how to report a vulnerability, and a summary of the threat model.
+  engine (`>=22.8`, as `docs/setup.md` says) and the license field.
+- `README.md` — the non-technical overview: what the bot does, what members see,
+  what it can and can't do, and links to everything else. No setup steps.
+- `SECURITY.md` — the threat model without the jargon (what the bot can see and do,
+  each risk and its mitigation, accepted risks, how to switch it off), ending with a
+  glossary. Problems go to the person running the bot or the moderators in Slack;
+  there is no separate vulnerability-reporting process.
+- `docs/setup.md` — operator docs, from creating the Slack app to deploying and
+  rotating tokens. Keep its env vars, scopes and deploy steps in step with
+  `src/config.js`, `manifest.json` and `deploy/`.
+- `docs/development.md` — the developer guide: the event flow, every log line and
+  what it means, troubleshooting, tests, the change workflow and the list of changes
+  that need a heads-up. Keep its log table in step with the log lines in
+  `src/`.
 - `LICENSE` — the Unlicense, which `package.json` declares.
 - `manifest.json` — the Slack app manifest, the source of truth for scopes and
   events: `message.channels`, plus `chat:write`, `channels:history` and
@@ -54,8 +64,8 @@ Behaviour details belong in `docs/spec.md`, and the tests pin them.
   deploy files and the testing rules. A behaviour change updates it, the tests and,
   where it applies, the threat model in the same commit.
 - `docs/threat-model.md` — the threats, their mitigations and the tests that prove
-  them. Update it, and the summary in `SECURITY.md`, when a mitigation or its test
-  changes.
+  them. Update it, and the plain-language version in `SECURITY.md`, when a
+  mitigation, an accepted risk or its test changes.
 - `test/helpers/offline-bolt.js` — a `--import` preload that blocks network access
   and stubs Bolt's Web API calls, so child-process tests of `src/app.js` never
   connect.
@@ -138,6 +148,17 @@ Behaviour details belong in `docs/spec.md`, and the tests pin them.
   a channel id; the deploy script takes the host only from its arguments.
 - **The tree names no workspace.** The committed tree carries no workspace names, host
   names, personal email addresses, tokens or channel ids. Examples use example.com.
+
+## Writing docs
+
+- Two levels. `README.md` and `SECURITY.md` are non-technical: plain, friendly,
+  informal language, every bit of jargon explained where it's used or in the
+  glossary at the end of `SECURITY.md`, no commands beyond the one to stop the
+  service. `docs/` is technical, for the people who run and change the bot.
+- The two levels must agree. A claim in `SECURITY.md` must be backed by
+  `docs/threat-model.md` or `docs/spec.md`, and never stronger than them.
+- A change on the list in `docs/development.md`, "Changes that need a heads-up",
+  updates `README.md` and `SECURITY.md` in the same commit.
 
 ## Checks
 

@@ -7,6 +7,18 @@ trusted, and each threat with its mitigation and the test that proves it. A
 threat that is not fully mitigated is marked as an accepted risk, with the
 reason.
 
+This is the technical version. [SECURITY.md](../SECURITY.md) covers the same
+ground without the jargon. The two must agree: when a mitigation, an accepted risk
+or a proving test changes here, update SECURITY.md in the same commit.
+
+Terms used below:
+
+- **The lamp:** the bot's `:rotating_light:` reaction on a post. The bot's own lamp
+  is the only record that a post has been nudged.
+- **A nudge:** the lamp plus the bot's one thread reply listing what is missing.
+- **ts:** a Slack message timestamp, which is also its id within a channel.
+- **Operator:** whoever runs the host and holds the tokens.
+
 ## Assets
 
 - **`SLACK_BOT_TOKEN`.** Grants the scopes `chat:write`, `channels:history` and
@@ -241,6 +253,11 @@ time (checked by review, no test).
 **Proof:** `test/deploy.test.js` "the unit sets every sandbox directive", "the
 unit runs as a non-root user with an absolute ExecStart" and "the unit has no
 ReadWritePaths or MemoryDenyWriteExecute".
+
+**Accepted risk:** The sandbox limits address families, not destinations, so a
+compromised process could connect anywhere the host can reach. The bot's code
+connects only to Slack. Restricting destinations would need per-host firewall rules
+for Slack's changing addresses, which a sample unit can't ship.
 
 ### 12. Events racing on one post
 

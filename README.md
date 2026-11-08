@@ -1,12 +1,19 @@
-# BST reply bot
+# BST Slack app
 
-A small helper bot for our buy/sell/trade (BST) Slack channel. When someone posts a
-listing that's missing something, like a price or a location, the bot leaves a
-short, friendly reply in the post's thread saying what's missing. When the post is
-fixed, the bot tidies up after itself.
+A Slack app for our buy/sell/trade (BST) channel. It may pick up more features over
+time, but right now it does one job: a helper bot that makes sure listings follow
+our posting rules.
 
-That's all it does. It **only gives advice**: it can't delete members' posts or ban
-anyone, and it only acts in the one channel it's set up for.
+When someone posts a listing that's missing something, like a price or a location,
+the bot leaves a short, friendly reply in the post's thread saying what's missing.
+When the post is fixed, the bot tidies up after itself.
+
+For now, that's all the app does. The bot **only gives advice**: it can't delete
+members' posts or ban anyone, and it only acts in the one channel it's set up for.
+
+If a new feature ever needs the app to see or do more than what's described here,
+we'll say so in Slack before turning it on, and update this page and
+[SECURITY.md](SECURITY.md) at the same time.
 
 ## What members see
 
@@ -58,7 +65,7 @@ channels. Moderators and admins get the same reminders as everyone else.
 ## What the bot can and can't do
 
 When a Slack app is installed, it asks for a fixed list of permissions (Slack calls
-them **scopes**). This bot asks for exactly three:
+them **scopes**). Today the app asks for exactly three, all used by the bot:
 
 | Permission | What it lets the bot do | Why it needs it |
 | --- | --- | --- |

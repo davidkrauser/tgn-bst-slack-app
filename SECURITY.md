@@ -156,7 +156,8 @@ claim.
 ## Words you might see
 
 - **Slack app / bot:** a program that connects to Slack and acts like a special
-  member account. This one is called "BST Reply Bot".
+  member account. Ours is called "BST App", and its bot shows up in Slack as
+  "BST Reply Bot".
 - **Token:** a long secret string that works like a password for the bot. Anyone who
   has it can act as the bot, so it's kept secret. This bot has two.
 - **Thread:** the replies under a post, which open on the side in Slack.

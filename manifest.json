@@ -1,7 +1,7 @@
 {
   "display_information": {
-    "name": "BST Reply Bot",
-    "description": "Replies in thread to buy/sell/trade posts that miss the posting format",
+    "name": "BST App",
+    "description": "Helpers for the buy/sell/trade channel. Today: a bot that replies in thread to posts that miss the posting format",
     "background_color": "#1a1a2e"
   },
   "features": {

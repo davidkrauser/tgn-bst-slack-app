@@ -11,7 +11,7 @@ bot does, see the [README](../README.md); for why it's built this way, see
  Slack workspace                          Linux host
  ┌──────────────────────┐   Socket Mode   ┌────────────────────────────────┐
  │ BST channel          │◄───(outbound)───│ bst.service                    │
- │ BST Reply Bot (app)  │   WebSocket +   │   user bst, sandboxed          │
+ │ BST App (Slack app)  │   WebSocket +   │   user bst, sandboxed          │
  │   3 bot scopes       │   Web API calls │   node /opt/bst/app/src/app.js │
  └──────────────────────┘                 │ /etc/bst/env    (root, 0600)   │
                                           │ /opt/bst/releases/<sha>/       │
